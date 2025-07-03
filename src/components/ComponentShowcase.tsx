@@ -10,7 +10,8 @@ import {
   Search, 
   Monitor,
   Play,
-  ChevronRight 
+  ChevronRight,
+  Computer 
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -27,7 +28,7 @@ const ComponentShowcase = () => {
       subtitle: 'Intelligent Power Management',
       description: 'Advanced switching power supply with multiple output rails, overvoltage protection, and intelligent load balancing. Features automatic power factor correction and energy-efficient design with 3D monitoring capabilities.',
       features: [
-        'Multi-rail output (5V, 12V, 24V)',
+        'output 12V',
         'Overvoltage & overcurrent protection',
         'Power factor correction',
         'Energy efficiency > 90%',
@@ -36,10 +37,9 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Power Supply 3D Demo Video',
       technicalSpecs: {
-        'Input Voltage': '85-265V AC',
-        'Output Power': '500W',
+        'Input Voltage': '220V AC',
+        'Output Power': '180W',
         'Efficiency': '92%',
-        'MTBF': '100,000 hours'
       }
     },
     {
@@ -58,7 +58,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Controller 3D Operation Demo',
       technicalSpecs: {
-        'Processor': 'ARM Cortex-M4',
+        'Processor': 'PIC Microcontrollers',
         'Memory': '1MB Flash, 192KB RAM',
         'I/O Ports': '64 Digital, 16 Analog',
         'Communication': 'CAN, UART, SPI, I2C'
@@ -80,14 +80,36 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Bus Communication 3D Protocol Demo',
       technicalSpecs: {
-        'Data Rate': '1 Mbps',
+        'Data Rate': '10 Kbps',
         'Max Distance': '1000m',
-        'Power Delivery': '24V, 5A',
+        'Power Delivery': '12V, 15A',
         'Protocol': 'Custom RS-485 based'
       }
     },
     {
       id: 3,
+      icon: <Computer className="w-6 h-6" />,
+      title: 'Desktop Simulator',
+      subtitle: 'Real-Time Elevator Simulation',
+      description: 'Advanced desktop application that provides real-time simulation of the elevator system. Features bidirectional control allowing operation from both physical buttons and simulator interface with synchronized movement and position tracking.',
+      features: [
+        'Real-time elevator simulation',
+        'Bidirectional control system',
+        'Synchronized position tracking',
+        'Virtual button interface',
+        'Live system monitoring',
+        '3D visualization engine'
+      ],
+      videoPlaceholder: 'Desktop Simulator 3D Interface Demo',
+      technicalSpecs: {
+        'Platform': 'Windows/Linux',
+        'Framework': 'Qt/C++',
+        'Update Rate': '50 Hz',
+        'Communication': 'Serial/USB'
+      }
+    },
+    {
+      id: 4,
       icon: <Monitor className="w-6 h-6" />,
       title: 'Floor Display System',
       subtitle: 'Sliding Number Display',
@@ -109,7 +131,7 @@ const ComponentShowcase = () => {
       }
     },
     {
-      id: 4,
+      id: 5,
       icon: <Hand className="w-6 h-6" />,
       title: 'Touchless Buttons',
       subtitle: 'Contactless Interface',
@@ -131,7 +153,7 @@ const ComponentShowcase = () => {
       }
     },
     {
-      id: 5,
+      id: 6,
       icon: <Activity className="w-6 h-6" />,
       title: '3-Phase Detection',
       subtitle: 'Power Quality Monitoring',
@@ -153,7 +175,7 @@ const ComponentShowcase = () => {
       }
     },
     {
-      id: 6,
+      id: 7,
       icon: <Search className="w-6 h-6" />,
       title: 'Bus Sniffer',
       subtitle: 'Diagnostic & Maintenance Tool',
@@ -175,7 +197,7 @@ const ComponentShowcase = () => {
       }
     },
     {
-      id: 7,
+      id: 8,
       icon: <Settings className="w-6 h-6" />,
       title: 'Mechanical Model',
       subtitle: 'Physical Demonstration Platform',

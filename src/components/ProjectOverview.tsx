@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Cpu, Zap, Radio, Shield, Wrench, TrendingUp } from 'lucide-react';
+import { Cpu, Zap, Radio, Shield, Wrench, TrendingUp, Computer, MonitorSpeaker } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ProjectOverview = () => {
@@ -24,19 +24,19 @@ const ProjectOverview = () => {
       description: 'Efficient data transmission using only two wires for both power and data signals.',
     },
     {
+      icon: <Computer className="w-8 h-8" />,
+      title: 'Desktop Simulator',
+      description: 'Real-time elevator simulation with bidirectional control between physical and virtual interfaces.',
+    },
+    {
       icon: <Shield className="w-8 h-8" />,
       title: 'Touchless Interface',
       description: 'Contactless button system providing hygienic and responsive user interaction.',
     },
     {
-      icon: <Wrench className="w-8 h-8" />,
+      icon: <MonitorSpeaker className="w-8 h-8" />,
       title: 'Monitoring & Maintenance',
       description: 'Built-in diagnostic tools and bus sniffer for system health monitoring.',
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Future-Ready Design',
-      description: 'Expandable architecture supporting UPS, inverter, and additional upgrades.',
     },
   ];
 
@@ -58,7 +58,8 @@ const ProjectOverview = () => {
               isDark ? 'text-slate-300' : 'text-gray-600'
             }`}>
               Our graduation project presents a comprehensive elevator control system that integrates 
-              cutting-edge technology with practical engineering solutions, designed for modern building infrastructure.
+              cutting-edge technology with practical engineering solutions, featuring both physical hardware 
+              and advanced simulation software for complete system control and monitoring.
             </p>
           </div>
 
@@ -96,13 +97,13 @@ const ProjectOverview = () => {
             ))}
           </div>
 
-          {/* Statistics */}
+          {/* Enhanced Statistics with Simulator */}
           <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { number: '12', label: 'Months Development', suffix: '+' },
-              { number: '3', label: 'Phase Detection', suffix: '' },
+              { number: '9', label: 'System Components', suffix: '' },
               { number: '99.9', label: 'Reliability Rate', suffix: '%' },
-              { number: '50', label: 'Cost Reduction', suffix: '%' },
+              { number: '2-Way', label: 'Control Interface', suffix: '' },
             ].map((stat, index) => (
               <div
                 key={index}
@@ -123,6 +124,64 @@ const ProjectOverview = () => {
                 }`}>{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Simulator Integration Highlight */}
+          <div className={`mt-16 border rounded-2xl p-8 ${
+            isDark 
+              ? 'bg-gradient-to-r from-slate-900 to-slate-800 border-slate-700' 
+              : 'bg-gradient-to-r from-gray-50 to-white border-gray-200 shadow-lg'
+          }`}>
+            <div className="text-center mb-8">
+              <div className={`inline-flex items-center space-x-3 mb-4 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>
+                <Computer className="w-8 h-8" />
+                <h3 className={`text-2xl font-bold ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Dual Control System</h3>
+              </div>
+              <p className={`text-lg max-w-3xl mx-auto ${
+                isDark ? 'text-slate-300' : 'text-gray-600'
+              }`}>
+                Our innovative system features bidirectional control between the physical elevator and desktop simulator. 
+                Users can operate the elevator using either the physical buttons or the simulator interface, 
+                with real-time synchronization ensuring both systems reflect the current elevator position and status.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className={`text-center p-6 rounded-lg ${
+                isDark ? 'bg-slate-800/50' : 'bg-white/70'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${
+                  isDark ? 'text-cyan-400' : 'text-blue-600'
+                }`}>Physical Control</div>
+                <div className={`text-sm ${
+                  isDark ? 'text-slate-400' : 'text-gray-600'
+                }`}>Real elevator buttons and touchless interface</div>
+              </div>
+              <div className={`text-center p-6 rounded-lg ${
+                isDark ? 'bg-slate-800/50' : 'bg-white/70'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${
+                  isDark ? 'text-cyan-400' : 'text-blue-600'
+                }`}>Virtual Control</div>
+                <div className={`text-sm ${
+                  isDark ? 'text-slate-400' : 'text-gray-600'
+                }`}>Desktop simulator with 3D visualization</div>
+              </div>
+              <div className={`text-center p-6 rounded-lg ${
+                isDark ? 'bg-slate-800/50' : 'bg-white/70'
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${
+                  isDark ? 'text-cyan-400' : 'text-blue-600'
+                }`}>Real-Time Sync</div>
+                <div className={`text-sm ${
+                  isDark ? 'text-slate-400' : 'text-gray-600'
+                }`}>Synchronized position and status updates</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Gauge, Zap, Thermometer, Clock, Shield, Cpu } from 'lucide-react';
+import { Gauge, Zap, Thermometer, Clock, Shield, Cpu, Computer } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const TechnicalSpecs = () => {
@@ -12,8 +12,8 @@ const TechnicalSpecs = () => {
       category: 'Power System',
       icon: <Zap className="w-6 h-6" />,
       specs: [
-        { label: 'Input Voltage', value: '85-265V AC' },
-        { label: 'Output Power', value: '500W' },
+        { label: 'Input Voltage', value: '220 AC' },
+        { label: 'Output Power', value: '180W' },
         { label: 'Efficiency', value: '92%' },
         { label: 'Power Factor', value: '>0.95' },
       ]
@@ -22,20 +22,30 @@ const TechnicalSpecs = () => {
       category: 'Control System',
       icon: <Cpu className="w-6 h-6" />,
       specs: [
-        { label: 'Processor', value: 'ARM Cortex-M4' },
-        { label: 'Clock Speed', value: '168 MHz' },
-        { label: 'Memory', value: '1MB Flash' },
-        { label: 'I/O Ports', value: '64 Digital' },
+        { label: 'Processor', value: 'PIC Microcontrollers' },
+        { label: 'Clock Speed', value: '4~20 MHz' },
+        // { label: 'Memory', value: '1MB Flash' },
+        // { label: 'I/O Ports', value: '64 Digital' },
       ]
     },
     {
       category: 'Communication',
       icon: <Gauge className="w-6 h-6" />,
       specs: [
-        { label: 'Data Rate', value: '1 Mbps' },
+        { label: 'Data Rate', value: '10 Kbps' },
         { label: 'Max Distance', value: '1000m' },
-        { label: 'Protocol', value: 'RS-485' },
-        { label: 'Error Rate', value: '<0.01%' },
+        // { label: 'Protocol', value: 'RS-485' },
+        // { label: 'Error Rate', value: '<0.01%' },
+      ]
+    },
+    {
+      category: 'Desktop Simulator',
+      icon: <Computer className="w-6 h-6" />,
+      specs: [
+        { label: 'Platform', value: 'Windows' },
+        { label: 'Framework', value: 'Windows API (C++)' },
+        { label: 'Update Rate', value: '50 Hz' },
+        { label: 'Communication', value: 'Serial/USB' },
       ]
     },
     {
@@ -57,16 +67,6 @@ const TechnicalSpecs = () => {
         { label: 'Safety Level', value: 'SIL 3' },
         { label: 'Warranty', value: '5 Years' },
       ]
-    },
-    {
-      category: 'Performance',
-      icon: <Clock className="w-6 h-6" />,
-      specs: [
-        { label: 'Response Time', value: '<100ms' },
-        { label: 'Accuracy', value: '±0.1%' },
-        { label: 'Throughput', value: '1000 req/s' },
-        { label: 'Latency', value: '<10ms' },
-      ]
     }
   ];
 
@@ -87,7 +87,8 @@ const TechnicalSpecs = () => {
             <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${
               isDark ? 'text-slate-300' : 'text-gray-600'
             }`}>
-              Detailed technical specifications and performance metrics of our elevator control system components.
+              Detailed technical specifications and performance metrics of our elevator control system components, 
+              including the advanced desktop simulator application.
             </p>
           </div>
 
@@ -133,7 +134,7 @@ const TechnicalSpecs = () => {
             ))}
           </div>
 
-          {/* Performance Metrics */}
+          {/* Enhanced Performance Metrics with Simulator */}
           <div className={`mt-16 border rounded-2xl p-8 ${
             isDark 
               ? 'bg-gradient-to-r from-slate-900 to-slate-800 border-slate-700' 
@@ -147,7 +148,7 @@ const TechnicalSpecs = () => {
               {[
                 { metric: 'System Uptime', value: '99.9%', description: 'Continuous operation reliability' },
                 { metric: 'Response Time', value: '<100ms', description: 'Average system response' },
-                { metric: 'Energy Efficiency', value: '92%', description: 'Power conversion efficiency' },
+                { metric: 'Sync Accuracy', value: '99.99%', description: 'Simulator-hardware sync' },
                 { metric: 'Data Accuracy', value: '99.99%', description: 'Communication reliability' },
               ].map((metric, index) => (
                 <div key={index} className="text-center">
@@ -162,6 +163,51 @@ const TechnicalSpecs = () => {
                   }`}>{metric.description}</div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Simulator Integration Details */}
+          <div className={`mt-12 border rounded-2xl p-8 ${
+            isDark 
+              ? 'bg-gradient-to-r from-blue-900/20 to-cyan-900/20 border-cyan-500/30' 
+              : 'bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200'
+          }`}>
+            <div className="flex items-center mb-6">
+              <Computer className={`w-8 h-8 mr-4 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`} />
+              <h3 className={`text-2xl font-bold ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>Simulator Integration Features</h3>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className={`text-lg font-bold mb-4 ${
+                  isDark ? 'text-cyan-300' : 'text-blue-700'
+                }`}>Real-Time Synchronization</h4>
+                <ul className={`space-y-2 ${
+                  isDark ? 'text-slate-300' : 'text-gray-700'
+                }`}>
+                  <li>• Bidirectional control communication</li>
+                  <li>• Live position tracking and updates</li>
+                  <li>• Synchronized button press responses</li>
+                  <li>• Real-time status monitoring</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className={`text-lg font-bold mb-4 ${
+                  isDark ? 'text-cyan-300' : 'text-blue-700'
+                }`}>Simulation Capabilities</h4>
+                <ul className={`space-y-2 ${
+                  isDark ? 'text-slate-300' : 'text-gray-700'
+                }`}>
+                  <li>• 3D elevator visualization</li>
+                  <li>• Virtual button interface</li>
+                  <li>• System diagnostics display</li>
+                  <li>• Performance analytics</li>
+                </ul>
+              </div>
             </div>
           </div>
 

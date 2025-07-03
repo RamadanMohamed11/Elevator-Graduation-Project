@@ -210,7 +210,13 @@ const Footer = () => {
               }`}>Project Supervisor</h5>
               <p className={`text-xl font-bold ${
                 isDark ? 'text-cyan-400' : 'text-blue-600'
-              }`}>Dr. Khaled Mamdouh Shaban</p>
+              }`}>Prof. Khaled Mamdouh Shabaan</p>
+               <p className={`text-xl font-bold ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Prof. Samia Ahmed Abdel-fattah</p>
+              <p className={`text-xl font-bold ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Prof. Hesham Abdel-Ghafaar</p>
               <p className={`text-sm mt-1 ${
                 isDark ? 'text-slate-400' : 'text-gray-600'
               }`}>Electrical Engineering Department</p>
