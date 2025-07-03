@@ -5,6 +5,19 @@ import { useTheme } from '../contexts/ThemeContext';
 const Footer = () => {
   const { isDark } = useTheme();
 
+  const teamMembers = [
+    'Ahmed Abd-Elbasit Ahmed',
+    'Amr Ans Mousa',
+    'Amr Mohamed Riad',
+    'Ebrahim Mohamed Riad',
+    'Hesham Ahmed Mahmoud',
+    'Kareem Mostafa Abd-Elnaaem',
+    'Omar Mohamed Abd-Elkareem',
+    'Omar Mohamed Saad',
+    'Ramadan Mohamed Kamel',
+    'Sohaila Ammary Mohamed'
+  ];
+
   return (
     <footer className={`border-t ${
       isDark 
@@ -152,34 +165,55 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Project Details */}
+        {/* Project Team */}
         <div className={`mt-12 pt-8 border-t ${
           isDark ? 'border-slate-800' : 'border-gray-200'
         }`}>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
+          <div className="text-center mb-8">
+            <h4 className={`text-2xl font-bold mb-4 ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}>Project Team</h4>
+            <p className={`text-lg ${
+              isDark ? 'text-slate-400' : 'text-gray-600'
+            }`}>Electrical Engineering Students - Final Year Project 2025</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+            {teamMembers.map((member, index) => (
+              <div key={index} className={`text-center p-4 rounded-lg border transition-all duration-300 hover:scale-105 ${
+                isDark 
+                  ? 'bg-slate-800/50 border-slate-700 hover:border-cyan-500/50' 
+                  : 'bg-gray-50 border-gray-200 hover:border-blue-300 shadow-sm hover:shadow-md'
+              }`}>
+                <div className={`w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center text-white font-bold ${
+                  isDark 
+                    ? 'bg-gradient-to-r from-blue-600 to-cyan-500' 
+                    : 'bg-gradient-to-r from-blue-500 to-blue-600'
+                }`}>
+                  {member.split(' ').map(name => name[0]).join('').slice(0, 2)}
+                </div>
+                <p className={`font-medium text-sm ${
+                  isDark ? 'text-slate-300' : 'text-gray-700'
+                }`}>{member}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <div className={`inline-block p-6 rounded-xl border ${
+              isDark 
+                ? 'bg-gradient-to-r from-slate-800 to-slate-900 border-slate-700' 
+                : 'bg-gradient-to-r from-gray-50 to-white border-gray-200 shadow-lg'
+            }`}>
               <h5 className={`text-lg font-bold mb-2 ${
                 isDark ? 'text-white' : 'text-gray-900'
-              }`}>Project Team</h5>
-              <p className={`text-sm ${
+              }`}>Project Supervisor</h5>
+              <p className={`text-xl font-bold ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>Dr. Khaled Mamdouh Shaban</p>
+              <p className={`text-sm mt-1 ${
                 isDark ? 'text-slate-400' : 'text-gray-600'
-              }`}>Electrical Engineering Students<br />Final Year Project</p>
-            </div>
-            <div className="text-center">
-              <h5 className={`text-lg font-bold mb-2 ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}>Academic Year</h5>
-              <p className={`text-sm ${
-                isDark ? 'text-slate-400' : 'text-gray-600'
-              }`}>2024-2025<br />Graduation Project</p>
-            </div>
-            <div className="text-center">
-              <h5 className={`text-lg font-bold mb-2 ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}>Supervisor</h5>
-              <p className={`text-sm ${
-                isDark ? 'text-slate-400' : 'text-gray-600'
-              }`}>Dr. Engineering Professor<br />Electrical Engineering Dept.</p>
+              }`}>Electrical Engineering Department</p>
             </div>
           </div>
         </div>
