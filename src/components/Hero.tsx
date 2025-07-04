@@ -5,6 +5,7 @@ import { useTheme } from '../contexts/ThemeContext';
 const Hero = () => {
   const [currentFloor, setCurrentFloor] = useState(1);
   const [isMoving, setIsMoving] = useState(false);
+  const [targetFloor, setTargetFloor] = useState(1);
   const { isDark } = useTheme();
 
   // Memoize particles to prevent recreation on every render
@@ -17,20 +18,54 @@ const Hero = () => {
     })), []
   );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // Handle floor button clicks
+  const handleFloorClick = (floor: number) => {
+    if (floor !== currentFloor && !isMoving) {
+      setTargetFloor(floor);
       setIsMoving(true);
+      
+      // Simulate elevator movement time based on distance
+      const distance = Math.abs(floor - currentFloor);
+      const moveTime = 1000 + (distance * 500); // Base time + time per floor
+      
       setTimeout(() => {
-        setCurrentFloor(prev => prev === 5 ? 1 : prev + 1);
+        setCurrentFloor(floor);
         setIsMoving(false);
-      }, 1000);
-    }, 3000);
+      }, moveTime);
+    }
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  // Calculate elevator position - properly centered within each floor section
+  const getElevatorPosition = (floor: number) => {
+    const floorHeight = 130; // Height allocated for each floor
+    const shaftPadding = 50; // Top padding in the shaft
+    const elevatorHeight = 32; // Height of elevator car (h-32 = 128px)
+    const totalFloors = 5;
+
+    // Calculate the center position for the given floor
+    // Floor 5 is at the top, floor 1 is at the bottom
+    const floorIndex = totalFloors - floor; // Convert floor number to index (0-4)
+    const floorCenterY = shaftPadding + (floorIndex * floorHeight) + (floorHeight / 2);
+    
+    // Position elevator so its center aligns with floor center
+    return floorCenterY - (elevatorHeight * 4) / 2; // Convert h-32 to pixels and center
+  };
+
+  // Calculate floor indicator positions to match elevator positioning
+  const getFloorIndicatorPosition = (floor: number) => {
+    const floorHeight = 130;
+    const shaftPadding = 50;
+    const totalFloors = 5;
+    const indicatorHeight = 16; // h-16 = 64px
+    
+    const floorIndex = totalFloors - floor;
+    const floorCenterY = shaftPadding + (floorIndex * floorHeight) + (floorHeight / 2);
+    
+    return floorCenterY - (indicatorHeight * 4) / 2; // Center the indicator
+  };
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
+    <section className={`relative min-h-[130vh] flex items-center justify-center overflow-hidden ${
       isDark 
         ? 'bg-custom-gradient' 
         : 'bg-gradient-to-br from-blue-50 via-white to-cyan-50'
@@ -160,8 +195,8 @@ const Hero = () => {
                   : 'bg-white shadow-2xl border border-gray-200'
               }`}></div>
               
-              {/* Elevator Shaft - Much Larger and Better Proportioned */}
-              <div className={`w-80 h-[750px] border-4 rounded-3xl relative overflow-hidden transition-all duration-300 ${
+              {/* Elevator Shaft - Properly sized for 5 floors */}
+              <div className={`w-80 h-[700px] border-4 rounded-3xl relative overflow-hidden transition-all duration-300 ${
                 isDark
                   ? 'bg-gradient-to-b from-slate-800 via-slate-700 to-slate-800 border-custom-cyan shadow-glow-xl animate-glowPulse'
                   : 'bg-gradient-to-b from-white via-gray-50 to-white border-blue-400 shadow-2xl'
@@ -174,7 +209,7 @@ const Hero = () => {
                     : 'bg-gradient-to-b from-blue-50 to-cyan-50 opacity-30'
                 }`}></div>
                 
-                {/* Floor Indicators - Better Positioned and Larger */}
+                {/* Floor Indicators - Properly aligned */}
                 {[5, 4, 3, 2, 1].map((floor) => (
                   <div
                     key={floor}
@@ -187,13 +222,13 @@ const Hero = () => {
                           ? 'bg-slate-700 border-slate-500 text-slate-400 hover:scale-110'
                           : 'bg-white border-gray-300 text-gray-600 hover:scale-110 shadow-md'
                     }`}
-                    style={{ top: `${(6 - floor) * 135 + 50}px` }}
+                    style={{ top: `${getFloorIndicatorPosition(floor)}px` }}
                   >
                     {floor}
                   </div>
                 ))}
 
-                {/* Enhanced Elevator Car - Properly Sized and Positioned */}
+                {/* Enhanced Elevator Car - Properly centered */}
                 <div
                   className={`absolute left-10 w-48 h-32 border-3 rounded-xl transition-all duration-1000 ease-in-out transform-3d ${
                     isDark
@@ -201,7 +236,7 @@ const Hero = () => {
                       : 'bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 border-blue-500'
                   } ${isMoving ? 'shadow-glow-xl scale-105' : 'shadow-glow'}`}
                   style={{
-                    top: `${(6 - currentFloor) * 135 + 60}px`,
+                    top: `${getElevatorPosition(currentFloor)}px`,
                     transform: isMoving ? 'rotateX(2deg) rotateY(1deg) scale(1.02)' : 'rotateX(0deg) rotateY(0deg) scale(1)',
                   }}
                 >
@@ -240,7 +275,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Shaft Rails - Better Positioned */}
+                {/* Shaft Rails - Better positioned */}
                 <div className={`absolute left-6 top-0 bottom-0 w-1.5 rounded-full ${
                   isDark 
                     ? 'bg-gradient-to-b from-custom-cyan-light via-transparent to-custom-cyan-light opacity-50' 
@@ -252,19 +287,19 @@ const Hero = () => {
                     : 'bg-gradient-to-b from-blue-300 via-transparent to-blue-300 opacity-60'
                 }`}></div>
                 
-                {/* Moving Light Effect */}
+                {/* Moving Light Effect - Centered with elevator */}
                 <div 
                   className={`absolute left-0 right-0 h-6 rounded-full opacity-60 transition-all duration-1000 ${
                     isDark 
                       ? 'bg-gradient-to-r from-transparent via-custom-cyan to-transparent' 
                       : 'bg-gradient-to-r from-transparent via-blue-400 to-transparent'
                   }`}
-                  style={{ top: `${(6 - currentFloor) * 135 + 70}px` }}
+                  style={{ top: `${getElevatorPosition(currentFloor) + 50}px` }}
                 ></div>
               </div>
 
-              {/* Enhanced Control Panel - Larger and Better Positioned */}
-              <div className={`absolute -right-44 top-1/2 transform -translate-y-1/2 w-36 h-72 border-3 rounded-xl p-6 animate-float3d ${
+              {/* Enhanced Control Panel - Interactive buttons */}
+              <div className={`absolute -right-44 top-1/2 transform -translate-y-1/2 w-36 h-100 border-3 rounded-xl p-6 animate-float3d ${
                 isDark
                   ? 'bg-gradient-to-b from-slate-800 to-slate-900 border-custom-cyan shadow-glow'
                   : 'bg-gradient-to-b from-white to-gray-50 border-blue-400 shadow-xl'
@@ -272,25 +307,34 @@ const Hero = () => {
                 <div className={`text-sm mb-6 text-center font-bold ${
                   isDark ? 'text-custom-cyan animate-textGlow' : 'text-blue-600'
                 }`}>CONTROL PANEL</div>
-                {[5, 4, 3, 2, 1].map((floor) => (
-                  <div
-                    key={floor}
-                    className={`w-20 h-10 mb-5 rounded-lg border-2 flex items-center justify-center text-lg font-bold transition-all duration-300 cursor-pointer transform hover:scale-110 ${
-                      currentFloor === floor
-                        ? isDark
-                          ? 'bg-custom-cyan border-custom-cyan text-slate-900 animate-pulse3d shadow-glow'
-                          : 'bg-blue-500 border-blue-500 text-white shadow-lg'
-                        : isDark
-                          ? 'bg-slate-700 border-slate-500 text-slate-400 hover:bg-slate-600 hover:border-custom-cyan-light'
-                          : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-blue-400 shadow-sm'
-                    }`}
-                  >
-                    {floor}
-                  </div>
-                ))}
+                
+                <div className="space-y-4">
+                  {[5, 4, 3, 2, 1].map((floor) => (
+                    <button
+                      key={floor}
+                      onClick={() => handleFloorClick(floor)}
+                      disabled={isMoving}
+                      className={`w-20 h-12 rounded-lg border-2 flex items-center justify-center text-lg font-bold transition-all duration-300 transform hover:scale-110 disabled:cursor-not-allowed ${
+                        currentFloor === floor
+                          ? isDark
+                            ? 'bg-custom-cyan border-custom-cyan text-slate-900 animate-pulse3d shadow-glow'
+                            : 'bg-blue-500 border-blue-500 text-white shadow-lg'
+                          : targetFloor === floor && isMoving
+                            ? isDark
+                              ? 'bg-yellow-500 border-yellow-500 text-slate-900 animate-pulse'
+                              : 'bg-yellow-400 border-yellow-400 text-white animate-pulse'
+                            : isDark
+                              ? 'bg-slate-700 border-slate-500 text-slate-400 hover:bg-slate-600 hover:border-custom-cyan-light disabled:opacity-50'
+                              : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-blue-400 shadow-sm disabled:opacity-50'
+                      }`}
+                    >
+                      {floor}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Enhanced Status Display - Larger and Better Positioned */}
+              {/* Enhanced Status Display - Shows target floor when moving */}
               <div className={`absolute -left-48 top-32 rounded-xl p-8 animate-float3d border-2 ${
                 isDark
                   ? 'bg-custom-card border-custom-cyan shadow-glow neon-border'
@@ -299,11 +343,22 @@ const Hero = () => {
                 <div className={`font-bold text-xl mb-4 ${
                   isDark ? 'text-custom-cyan' : 'text-blue-600'
                 }`}>SYSTEM STATUS</div>
-                <div className={`text-lg mb-3 ${isDark ? 'text-white' : 'text-gray-800'}`}>Current Floor: <span className="font-bold">{currentFloor}</span></div>
-                <div className={`text-lg mb-5 ${isDark ? 'text-white' : 'text-gray-800'}`}>Mode: <span className="font-bold">{isMoving ? 'Moving' : 'Idle'}</span></div>
+                <div className={`text-lg mb-3 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+                  Current Floor: <span className="font-bold">{currentFloor}</span>
+                </div>
+                {isMoving && (
+                  <div className={`text-lg mb-3 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`}>
+                    Target Floor: <span className="font-bold">{targetFloor}</span>
+                  </div>
+                )}
+                <div className={`text-lg mb-5 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+                  Mode: <span className="font-bold">{isMoving ? 'Moving' : 'Idle'}</span>
+                </div>
                 <div className="flex items-center">
                   <div className={`w-4 h-4 rounded-full mr-4 ${isMoving ? 'bg-yellow-400 animate-pulse' : 'bg-green-400'}`}></div>
-                  <div className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>{isMoving ? 'In Transit' : 'Ready'}</div>
+                  <div className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>
+                    {isMoving ? `Moving to Floor ${targetFloor}` : 'Ready'}
+                  </div>
                 </div>
               </div>
             </div>

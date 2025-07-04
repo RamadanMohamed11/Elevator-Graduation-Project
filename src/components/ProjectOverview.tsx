@@ -41,9 +41,8 @@ const ProjectOverview = () => {
   ];
 
   return (
-    <section id="overview" className={`py-20 ${
-      isDark ? 'bg-slate-800/50' : 'bg-white'
-    }`}>
+    <section id="overview" className={`mt-32 pt-20 pb-20 ${isDark ? 'bg-slate-800/50' : 'bg-white'}`}>
+
       <div className="container mx-auto px-6">
         <div ref={ref} className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="text-center mb-16">

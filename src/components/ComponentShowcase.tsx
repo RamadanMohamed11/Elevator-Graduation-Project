@@ -11,13 +11,15 @@ import {
   Monitor,
   Play,
   ChevronRight,
-  Computer 
+  Computer,
+  X
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ComponentShowcase = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const [activeComponent, setActiveComponent] = useState(0);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { isDark } = useTheme();
 
   const components = [
@@ -36,6 +38,8 @@ const ComponentShowcase = () => {
         '3D power visualization'
       ],
       videoPlaceholder: 'Power Supply 3D Demo Video',
+      backgroundImage: 'https://www.audiophonics.fr/23099-thickbox_default/audiophonics-lpsu25-linear-regulated-power-supply-emi-rfi-filter-220v-to-12v-125a-25va.jpg',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Input Voltage': '220V AC',
         'Output Power': '180W',
@@ -57,6 +61,8 @@ const ComponentShowcase = () => {
         '3D system visualization'
       ],
       videoPlaceholder: 'Controller 3D Operation Demo',
+      backgroundImage: 'https://meiusa.com/wp-content/uploads/2024/01/Hydraulic-Controller-400-600x600-1.jpg',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Processor': 'PIC Microcontrollers',
         'Memory': '1MB Flash, 192KB RAM',
@@ -79,6 +85,8 @@ const ComponentShowcase = () => {
         '3D signal flow visualization'
       ],
       videoPlaceholder: 'Bus Communication 3D Protocol Demo',
+      backgroundImage: 'https://blog.intellimeter.com/hs-fs/hubfs/images/blogs/2021/what%20is%20mbus%202/Picture1.png?width=468&name=Picture1.png',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Data Rate': '10 Kbps',
         'Max Distance': '1000m',
@@ -101,9 +109,11 @@ const ComponentShowcase = () => {
         '3D visualization engine'
       ],
       videoPlaceholder: 'Desktop Simulator 3D Interface Demo',
+      backgroundImage: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
-        'Platform': 'Windows/Linux',
-        'Framework': 'Qt/C++',
+        'Platform': 'Windows',
+        'Framework': 'Windows API (C++)',
         'Update Rate': '50 Hz',
         'Communication': 'Serial/USB'
       }
@@ -123,11 +133,13 @@ const ComponentShowcase = () => {
         'Holographic display effects'
       ],
       videoPlaceholder: 'Floor Display 3D Animation Demo',
+      backgroundImage: 'https://media.istockphoto.com/id/873546554/photo/elevator-screen-show-floor-number.jpg?s=612x612&w=0&k=20&c=CJjYmYhIlAcZl4iJ66VMIZR7RfVQt4EJ1PEzZrM2sgU=',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
-        'Display Type': '7-Segment LED',
-        'Brightness': '1000 nits',
-        'Viewing Angle': '160°',
-        'Refresh Rate': '60 Hz'
+        'Display Type': '7-Segment LED and Arrow Segment',
+        // 'Brightness': '1000 nits',
+        // 'Viewing Angle': '160°',
+        // 'Refresh Rate': '60 Hz'
       }
     },
     {
@@ -145,6 +157,8 @@ const ComponentShowcase = () => {
         '3D gesture recognition'
       ],
       videoPlaceholder: 'Touchless Interface 3D Demo',
+      backgroundImage: 'https://www.corplock.com.au/cdn/shop/products/NT70Features-Corplock_1bebc67b-cabf-4edc-8a5d-93dd9f345051_1200x1200.jpg?v=1613363431',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Detection Range': '2-10cm',
         'Response Time': '<100ms',
@@ -167,6 +181,8 @@ const ComponentShowcase = () => {
         '3D waveform visualization'
       ],
       videoPlaceholder: '3-Phase Monitoring 3D Demo',
+      backgroundImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy3cDY0I-kIJWg6cbTsY4E5-x0lnSh-26aeQ&s',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Voltage Range': '100-500V',
         'Frequency': '45-65 Hz',
@@ -189,6 +205,8 @@ const ComponentShowcase = () => {
         '3D network topology view'
       ],
       videoPlaceholder: 'Bus Sniffer 3D Interface Demo',
+      backgroundImage: 'https://res.cloudinary.com/dhjyfpw6f/image/upload/v1751668688/ChatGPT_Image_Jul_5_2025_01_37_34_AM_bnyk7i.png',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Capture Rate': '10 Mbps',
         'Memory': '2GB logging capacity',
@@ -211,6 +229,8 @@ const ComponentShowcase = () => {
         '3D real-time monitoring'
       ],
       videoPlaceholder: 'Mechanical Model 3D Operation',
+      backgroundImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d54f1956490261.59b09005aed88.png',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Scale': '1:10',
         'Load Capacity': '5kg',
@@ -219,6 +239,35 @@ const ComponentShowcase = () => {
       }
     }
   ];
+
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true);
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+    // Restore body scroll
+    document.body.style.overflow = 'unset';
+  };
+
+  // Close modal on escape key
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    };
+
+    if (isVideoModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isVideoModalOpen]);
 
   return (
     <section id="components" className={`py-20 relative overflow-hidden border-y ${
@@ -362,13 +411,32 @@ const ComponentShowcase = () => {
                 <div className={`grid md:grid-cols-2 gap-8 p-8 ${
                   isDark ? 'bg-slate-950/50' : 'bg-white'
                 }`}>
-                  {/* Video Placeholder */}
-                  <div className={`border-2 rounded-xl aspect-video flex items-center justify-center group cursor-pointer transform hover:scale-105 animate-cardHover3d shadow-xl transition-all duration-500 ${
-                    isDark 
-                      ? 'bg-slate-950 border-slate-700 hover:border-custom-cyan' 
-                      : 'bg-gray-50 border-gray-300 hover:border-blue-400'
-                  }`}>
-                    <div className="text-center">
+                  {/* Video Placeholder with Background Image */}
+                  <div 
+                    onClick={openVideoModal}
+                    className={`relative border-2 rounded-xl aspect-video flex items-center justify-center group cursor-pointer transform hover:scale-105 animate-cardHover3d shadow-xl transition-all duration-500 overflow-hidden ${
+                      isDark 
+                        ? 'border-slate-700 hover:border-custom-cyan' 
+                        : 'border-gray-300 hover:border-blue-400'
+                    }`}
+                  >
+                    {/* Background Image */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(${components[activeComponent].backgroundImage})`,
+                      }}
+                    >
+                      {/* Overlay */}
+                      <div className={`absolute inset-0 ${
+                        isDark 
+                          ? 'bg-slate-900/70 group-hover:bg-slate-900/60' 
+                          : 'bg-white/70 group-hover:bg-white/60'
+                      } transition-all duration-300`}></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
                       <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-125 transition-transform duration-500 shadow-glow-lg ${
                         isDark 
                           ? 'bg-gradient-to-r from-custom-cyan to-blue-500 animate-pulse3d' 
@@ -377,7 +445,7 @@ const ComponentShowcase = () => {
                         <Play className="w-10 h-10 text-white ml-1" />
                       </div>
                       <p className={`font-bold text-lg mb-2 ${
-                        isDark ? 'text-slate-300' : 'text-gray-700'
+                        isDark ? 'text-white' : 'text-gray-900'
                       }`}>{components[activeComponent].videoPlaceholder}</p>
                       <p className={`text-sm font-medium ${
                         isDark 
@@ -447,6 +515,86 @@ const ComponentShowcase = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={closeVideoModal}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className={`relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl ${
+            isDark ? 'bg-slate-900' : 'bg-white'
+          }`}>
+            {/* Modal Header */}
+            <div className={`flex items-center justify-between p-6 border-b ${
+              isDark ? 'border-slate-700' : 'border-gray-200'
+            }`}>
+              <div>
+                <h3 className={`text-2xl font-bold ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>System Demonstration</h3>
+                <p className={`text-lg ${
+                  isDark ? 'text-custom-cyan' : 'text-blue-600'
+                }`}>{components[activeComponent].title}</p>
+              </div>
+              <button
+                onClick={closeVideoModal}
+                className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
+                  isDark 
+                    ? 'bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white' 
+                    : 'bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Video Container */}
+            <div className="p-6">
+              <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  preload="metadata"
+                  style={{ aspectRatio: '16/9' }}
+                >
+                  <source src={components[activeComponent].videoUrl} type="video/mp4" />
+                  <p className={`text-center p-8 ${
+                    isDark ? 'text-slate-400' : 'text-gray-600'
+                  }`}>
+                    Your browser does not support the video tag. 
+                    <a 
+                      href={components[activeComponent].videoUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`ml-2 underline ${
+                        isDark ? 'text-custom-cyan hover:text-custom-cyan-dark' : 'text-blue-600 hover:text-blue-800'
+                      }`}
+                    >
+                      Download the video instead
+                    </a>
+                  </p>
+                </video>
+              </div>
+              
+              {/* Video Description */}
+              <div className="mt-6">
+                <p className={`text-lg leading-relaxed ${
+                  isDark ? 'text-slate-300' : 'text-gray-600'
+                }`}>
+                  Watch our comprehensive demonstration of the {components[activeComponent].title.toLowerCase()} 
+                  showcasing real-time operation, advanced features, and system integration capabilities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
