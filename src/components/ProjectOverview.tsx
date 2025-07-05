@@ -1,9 +1,13 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Cpu, Zap, Radio, Shield, Wrench, TrendingUp, Computer, MonitorSpeaker } from 'lucide-react';
+import { Cpu, Zap, Radio, Shield, Wrench, TrendingUp, Computer, MonitorSpeaker, FileText, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
-const ProjectOverview = () => {
+interface ProjectOverviewProps {
+  onShowTechnicalDetails: () => void;
+}
+
+const ProjectOverview: React.FC<ProjectOverviewProps> = ({ onShowTechnicalDetails }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const { isDark } = useTheme();
 
@@ -125,11 +129,48 @@ const ProjectOverview = () => {
             ))}
           </div>
 
-          {/* Simulator Integration Highlight */}
+          {/* Technical Documentation Call-to-Action */}
           <div className={`mt-16 border rounded-2xl p-8 ${
             isDark 
               ? 'bg-gradient-to-r from-slate-900 to-slate-800 border-slate-700' 
               : 'bg-gradient-to-r from-gray-50 to-white border-gray-200 shadow-lg'
+          }`}>
+            <div className="text-center mb-8">
+              <div className={`inline-flex items-center space-x-3 mb-4 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>
+                <FileText className="w-8 h-8" />
+                <h3 className={`text-2xl font-bold ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Detailed Technical Documentation</h3>
+              </div>
+              <p className={`text-lg max-w-3xl mx-auto mb-8 ${
+                isDark ? 'text-slate-300' : 'text-gray-600'
+              }`}>
+                Explore comprehensive technical specifications, system architecture details, and implementation 
+                methodologies behind our innovative bus-based elevator control system.
+              </p>
+              
+              <button
+                onClick={onShowTechnicalDetails}
+                className={`group inline-flex items-center space-x-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
+                  isDark
+                    ? 'bg-gradient-to-r from-custom-cyan to-blue-500 hover:from-custom-cyan-dark hover:to-blue-600 text-white shadow-glow'
+                    : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl'
+                }`}
+              >
+                <FileText className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                <span>Read Technical Documentation</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          {/* Simulator Integration Highlight */}
+          <div className={`mt-12 border rounded-2xl p-8 ${
+            isDark 
+              ? 'bg-gradient-to-r from-blue-900/20 to-cyan-900/20 border-cyan-500/30' 
+              : 'bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200'
           }`}>
             <div className="text-center mb-8">
               <div className={`inline-flex items-center space-x-3 mb-4 ${
