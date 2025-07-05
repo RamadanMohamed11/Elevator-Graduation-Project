@@ -22,16 +22,6 @@ const ComponentShowcase = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const { isDark } = useTheme();
 
-  // Helper function to extract video ID and create proper embed URL
-  const getYouTubeEmbedUrl = (url: string) => {
-    // Extract video ID from various YouTube URL formats
-    const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
-    if (videoId) {
-      return `https://www.youtube.com/embed/${videoId[1]}`;
-    }
-    return url;
-  };
-
   const components = [
     {
       id: 0,
@@ -49,7 +39,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Power Supply 3D Demo Video',
       backgroundImage: 'https://www.audiophonics.fr/23099-thickbox_default/audiophonics-lpsu25-linear-regulated-power-supply-emi-rfi-filter-220v-to-12v-125a-25va.jpg',
-      videoUrl: 'https://www.youtube.com/watch?v=SMPhh8gT_1E',
+      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
       technicalSpecs: {
         'Input Voltage': '220V AC',
         'Output Power': '180W',
@@ -72,7 +62,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Controller 3D Operation Demo',
       backgroundImage: 'https://meiusa.com/wp-content/uploads/2024/01/Hydraulic-Controller-400-600x600-1.jpg',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Processor': 'PIC Microcontrollers',
         'Memory': '1MB Flash, 192KB RAM',
@@ -96,7 +86,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Bus Communication 3D Protocol Demo',
       backgroundImage: 'https://blog.intellimeter.com/hs-fs/hubfs/images/blogs/2021/what%20is%20mbus%202/Picture1.png?width=468&name=Picture1.png',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Data Rate': '10 Kbps',
         'Max Distance': '1000m',
@@ -120,7 +110,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Desktop Simulator 3D Interface Demo',
       backgroundImage: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Platform': 'Windows',
         'Framework': 'Windows API (C++)',
@@ -144,7 +134,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Floor Display 3D Animation Demo',
       backgroundImage: 'https://media.istockphoto.com/id/873546554/photo/elevator-screen-show-floor-number.jpg?s=612x612&w=0&k=20&c=CJjYmYhIlAcZl4iJ66VMIZR7RfVQt4EJ1PEzZrM2sgU=',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Display Type': '7-Segment LED and Arrow Segment',
         // 'Brightness': '1000 nits',
@@ -168,7 +158,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Touchless Interface 3D Demo',
       backgroundImage: 'https://www.corplock.com.au/cdn/shop/products/NT70Features-Corplock_1bebc67b-cabf-4edc-8a5d-93dd9f345051_1200x1200.jpg?v=1613363431',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Detection Range': '2-10cm',
         'Response Time': '<100ms',
@@ -192,7 +182,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: '3-Phase Monitoring 3D Demo',
       backgroundImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy3cDY0I-kIJWg6cbTsY4E5-x0lnSh-26aeQ&s',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Voltage Range': '100-500V',
         'Frequency': '45-65 Hz',
@@ -216,7 +206,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Bus Sniffer 3D Interface Demo',
       backgroundImage: 'https://res.cloudinary.com/dhjyfpw6f/image/upload/v1751668688/ChatGPT_Image_Jul_5_2025_01_37_34_AM_bnyk7i.png',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Capture Rate': '10 Mbps',
         'Memory': '2GB logging capacity',
@@ -240,7 +230,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Mechanical Model 3D Operation',
       backgroundImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d54f1956490261.59b09005aed88.png',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
         'Scale': '1:10',
         'Load Capacity': '5kg',
