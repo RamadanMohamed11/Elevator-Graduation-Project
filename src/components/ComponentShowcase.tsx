@@ -39,7 +39,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Power Supply 3D Demo Video',
       backgroundImage: 'https://www.audiophonics.fr/23099-thickbox_default/audiophonics-lpsu25-linear-regulated-power-supply-emi-rfi-filter-220v-to-12v-125a-25va.jpg',
-      videoUrl: 'https://www.youtube.com/embed/SMPhh8gT_1E?si=8Ofx3QAuFP1t2lW_',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Input Voltage': '220V AC',
         'Output Power': '180W',
@@ -62,7 +62,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Controller 3D Operation Demo',
       backgroundImage: 'https://meiusa.com/wp-content/uploads/2024/01/Hydraulic-Controller-400-600x600-1.jpg',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Processor': 'PIC Microcontrollers',
         'Memory': '1MB Flash, 192KB RAM',
@@ -86,7 +86,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Bus Communication 3D Protocol Demo',
       backgroundImage: 'https://blog.intellimeter.com/hs-fs/hubfs/images/blogs/2021/what%20is%20mbus%202/Picture1.png?width=468&name=Picture1.png',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Data Rate': '10 Kbps',
         'Max Distance': '1000m',
@@ -110,7 +110,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Desktop Simulator 3D Interface Demo',
       backgroundImage: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Platform': 'Windows',
         'Framework': 'Windows API (C++)',
@@ -134,7 +134,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Floor Display 3D Animation Demo',
       backgroundImage: 'https://media.istockphoto.com/id/873546554/photo/elevator-screen-show-floor-number.jpg?s=612x612&w=0&k=20&c=CJjYmYhIlAcZl4iJ66VMIZR7RfVQt4EJ1PEzZrM2sgU=',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Display Type': '7-Segment LED and Arrow Segment',
         // 'Brightness': '1000 nits',
@@ -158,7 +158,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Touchless Interface 3D Demo',
       backgroundImage: 'https://www.corplock.com.au/cdn/shop/products/NT70Features-Corplock_1bebc67b-cabf-4edc-8a5d-93dd9f345051_1200x1200.jpg?v=1613363431',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Detection Range': '2-10cm',
         'Response Time': '<100ms',
@@ -182,7 +182,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: '3-Phase Monitoring 3D Demo',
       backgroundImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy3cDY0I-kIJWg6cbTsY4E5-x0lnSh-26aeQ&s',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Voltage Range': '100-500V',
         'Frequency': '45-65 Hz',
@@ -206,7 +206,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Bus Sniffer 3D Interface Demo',
       backgroundImage: 'https://res.cloudinary.com/dhjyfpw6f/image/upload/v1751668688/ChatGPT_Image_Jul_5_2025_01_37_34_AM_bnyk7i.png',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Capture Rate': '10 Mbps',
         'Memory': '2GB logging capacity',
@@ -230,7 +230,7 @@ const ComponentShowcase = () => {
       ],
       videoPlaceholder: 'Mechanical Model 3D Operation',
       backgroundImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d54f1956490261.59b09005aed88.png',
-      videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
+      videoUrl: 'https://res.cloudinary.com/dhjyfpw6f/video/upload/v1751644713/v1_ybz8ra.mp4',
       technicalSpecs: {
         'Scale': '1:10',
         'Load Capacity': '5kg',
@@ -516,7 +516,7 @@ const ComponentShowcase = () => {
         </div>
       </div>
 
-      {/* YouTube Video Modal */}
+      {/* Video Modal */}
       {isVideoModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
@@ -553,20 +553,33 @@ const ComponentShowcase = () => {
               </button>
             </div>
             
-            {/* YouTube Video Container */}
+            {/* Video Container */}
             <div className="p-6">
               <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={components[activeComponent].videoUrl}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="w-full h-full"
-                ></iframe>
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  preload="metadata"
+                  style={{ aspectRatio: '16/9' }}
+                >
+                  <source src={components[activeComponent].videoUrl} type="video/mp4" />
+                  <p className={`text-center p-8 ${
+                    isDark ? 'text-slate-400' : 'text-gray-600'
+                  }`}>
+                    Your browser does not support the video tag. 
+                    <a 
+                      href={components[activeComponent].videoUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`ml-2 underline ${
+                        isDark ? 'text-custom-cyan hover:text-custom-cyan-dark' : 'text-blue-600 hover:text-blue-800'
+                      }`}
+                    >
+                      Download the video instead
+                    </a>
+                  </p>
+                </video>
               </div>
               
               {/* Video Description */}
