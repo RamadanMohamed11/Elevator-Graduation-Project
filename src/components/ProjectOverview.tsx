@@ -100,33 +100,33 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({ onShowTechnicalDetail
             ))}
           </div>
 
-          {/* Enhanced Statistics with Simulator */}
-          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { number: '12', label: 'Months Development', suffix: '+' },
-              { number: '9', label: 'System Components', suffix: '' },
-              { number: '99.9', label: 'Reliability Rate', suffix: '%' },
-              { number: '2-Way', label: 'Control Interface', suffix: '' },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className={`text-center p-6 border rounded-lg transition-all duration-500 ${
-                  isDark 
-                    ? 'bg-gradient-to-b from-slate-800 to-slate-900 border-slate-700' 
-                    : 'bg-gradient-to-b from-gray-50 to-white border-gray-200 shadow-md hover:shadow-lg'
-                } ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                style={{ transitionDelay: `${(index + 3) * 150}ms` }}
-              >
-                <div className={`text-4xl font-bold mb-2 ${
-                  isDark ? 'text-cyan-400' : 'text-blue-600'
-                }`}>
-                  {stat.number}{stat.suffix}
+          {/* Centered Statistics */}
+          <div className="mt-20 flex justify-center">
+            <div className="grid grid-cols-2 gap-8 max-w-2xl">
+              {[
+                // { number: '12', label: 'Months Development', suffix: '+' },
+                // { number: '2-Way', label: 'Control Interface', suffix: '' },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  className={`text-center p-6 border rounded-lg transition-all duration-500 ${
+                    isDark 
+                      ? 'bg-gradient-to-b from-slate-800 to-slate-900 border-slate-700' 
+                      : 'bg-gradient-to-b from-gray-50 to-white border-gray-200 shadow-md hover:shadow-lg'
+                  } ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${(index + 3) * 150}ms` }}
+                >
+                  <div className={`text-4xl font-bold mb-2 ${
+                    isDark ? 'text-cyan-400' : 'text-blue-600'
+                  }`}>
+                    {stat.number}{stat.suffix}
+                  </div>
+                  <div className={`font-medium ${
+                    isDark ? 'text-slate-400' : 'text-gray-600'
+                  }`}>{stat.label}</div>
                 </div>
-                <div className={`font-medium ${
-                  isDark ? 'text-slate-400' : 'text-gray-600'
-                }`}>{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Technical Documentation Call-to-Action */}

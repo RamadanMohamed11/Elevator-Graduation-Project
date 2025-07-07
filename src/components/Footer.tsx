@@ -17,6 +17,7 @@ const Footer = () => {
     },
     {
       name: 'Ebrahim Mohamed Riad',
+       image: 'https://res.cloudinary.com/dhjyfpw6f/image/upload/v1751885655/WhatsApp_Image_2025-07-07_at_13.52.02_0d3ee9a8_visvun.jpg',
     },
     {
       name: 'Hesham Ahmed Mahmoud',

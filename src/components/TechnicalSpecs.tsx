@@ -32,7 +32,7 @@ const TechnicalSpecs = () => {
       category: 'Communication',
       icon: <Gauge className="w-6 h-6" />,
       specs: [
-        { label: 'Data Rate', value: '10 Kbps' },
+        { label: 'Frequency', value: '10 KHz' },
         { label: 'Max Distance', value: '1000m' },
         // { label: 'Protocol', value: 'RS-485' },
         // { label: 'Error Rate', value: '<0.01%' },
@@ -44,28 +44,7 @@ const TechnicalSpecs = () => {
       specs: [
         { label: 'Platform', value: 'Windows' },
         { label: 'Framework', value: 'Windows API (C++)' },
-        { label: 'Update Rate', value: '50 Hz' },
         { label: 'Communication', value: 'Serial/USB' },
-      ]
-    },
-    {
-      category: 'Environmental',
-      icon: <Thermometer className="w-6 h-6" />,
-      specs: [
-        { label: 'Operating Temp', value: '-20°C to +70°C' },
-        { label: 'Humidity', value: '5-95% RH' },
-        { label: 'Vibration', value: '5-200 Hz' },
-        { label: 'IP Rating', value: 'IP65' },
-      ]
-    },
-    {
-      category: 'Reliability',
-      icon: <Shield className="w-6 h-6" />,
-      specs: [
-        { label: 'MTBF', value: '100,000 hrs' },
-        { label: 'Availability', value: '99.9%' },
-        { label: 'Safety Level', value: 'SIL 3' },
-        { label: 'Warranty', value: '5 Years' },
       ]
     }
   ];
@@ -92,7 +71,7 @@ const TechnicalSpecs = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {specifications.map((category, index) => (
               <div
                 key={index}
@@ -132,38 +111,6 @@ const TechnicalSpecs = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Enhanced Performance Metrics with Simulator */}
-          <div className={`mt-16 border rounded-2xl p-8 ${
-            isDark 
-              ? 'bg-gradient-to-r from-slate-900 to-slate-800 border-slate-700' 
-              : 'bg-gradient-to-r from-gray-50 to-white border-gray-200 shadow-lg'
-          }`}>
-            <h3 className={`text-2xl font-bold mb-8 text-center ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>System Performance Metrics</h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { metric: 'System Uptime', value: '99.9%', description: 'Continuous operation reliability' },
-                { metric: 'Response Time', value: '<100ms', description: 'Average system response' },
-                { metric: 'Sync Accuracy', value: '99.99%', description: 'Simulator-hardware sync' },
-                { metric: 'Data Accuracy', value: '99.99%', description: 'Communication reliability' },
-              ].map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className={`text-3xl font-bold mb-2 ${
-                    isDark ? 'text-cyan-400' : 'text-blue-600'
-                  }`}>{metric.value}</div>
-                  <div className={`text-lg font-semibold mb-1 ${
-                    isDark ? 'text-white' : 'text-gray-900'
-                  }`}>{metric.metric}</div>
-                  <div className={`text-sm ${
-                    isDark ? 'text-slate-400' : 'text-gray-600'
-                  }`}>{metric.description}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Simulator Integration Details */}
@@ -208,24 +155,6 @@ const TechnicalSpecs = () => {
                   <li>• Performance analytics</li>
                 </ul>
               </div>
-            </div>
-          </div>
-
-          {/* Compliance & Standards */}
-          <div className="mt-12 text-center">
-            <h4 className={`text-lg font-bold mb-6 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>Compliance & Standards</h4>
-            <div className="flex flex-wrap justify-center gap-4">
-              {['ISO 9001', 'IEC 61508', 'EN 81-20', 'FCC Part 15', 'CE Marking', 'RoHS'].map((standard, index) => (
-                <div key={index} className={`px-4 py-2 border rounded-lg font-medium ${
-                  isDark 
-                    ? 'bg-slate-800 border-slate-600 text-slate-300' 
-                    : 'bg-gray-50 border-gray-300 text-gray-700'
-                }`}>
-                  {standard}
-                </div>
-              ))}
             </div>
           </div>
         </div>

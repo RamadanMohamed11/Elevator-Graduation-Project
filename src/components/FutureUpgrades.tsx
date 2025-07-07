@@ -3,11 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { 
   Battery, 
   Zap, 
-  Wifi, 
-  Brain, 
   Smartphone, 
-  Cloud,
-  ArrowRight,
   CheckCircle 
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -32,7 +28,6 @@ const FutureUpgrades = () => {
       icon: <Battery className="w-8 h-8" />,
       title: 'Uninterruptible Power Supply (UPS)',
       description: 'Battery backup system ensuring continuous operation during power outages with intelligent power management.',
-      timeline: 'Phase 1 - Q2 2025',
       features: [
         'Seamless power transition',
         'Extended backup duration',
@@ -45,7 +40,6 @@ const FutureUpgrades = () => {
       icon: <Zap className="w-8 h-8" />,
       title: 'Intelligent Inverter System',
       description: 'Advanced variable frequency drive for smooth motor control, energy optimization, and regenerative braking.',
-      timeline: 'Phase 1 - Q3 2025',
       features: [
         'Variable speed control',
         'Energy regeneration',
@@ -55,54 +49,14 @@ const FutureUpgrades = () => {
       status: 'planned'
     },
     {
-      icon: <Wifi className="w-8 h-8" />,
-      title: 'IoT Connectivity Hub',
-      description: 'Internet of Things integration for remote monitoring, predictive maintenance, and cloud-based analytics.',
-      timeline: 'Phase 2 - Q4 2025',
-      features: [
-        'Remote system monitoring',
-        'Cloud data analytics',
-        'Mobile app integration',
-        'Real-time notifications'
-      ],
-      status: 'development'
-    },
-    {
-      icon: <Brain className="w-8 h-8" />,
-      title: 'AI-Powered Optimization',
-      description: 'Machine learning algorithms for traffic pattern analysis, predictive maintenance, and energy optimization.',
-      timeline: 'Phase 2 - Q1 2026',
-      features: [
-        'Traffic pattern learning',
-        'Predictive maintenance',
-        'Energy usage optimization',
-        'Performance analytics'
-      ],
-      status: 'research'
-    },
-    {
       icon: <Smartphone className="w-8 h-8" />,
       title: 'Mobile Integration Suite',
       description: 'Comprehensive mobile application for elevator control, monitoring, and maintenance management.',
-      timeline: 'Phase 3 - Q2 2026',
       features: [
         'Remote elevator control',
         'Maintenance scheduling',
         'Performance dashboards',
         'User preference settings'
-      ],
-      status: 'concept'
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: 'Cloud-Based Management',
-      description: 'Centralized cloud platform for multi-building elevator fleet management and analytics.',
-      timeline: 'Phase 3 - Q3 2026',
-      features: [
-        'Multi-building management',
-        'Centralized analytics',
-        'Automated reporting',
-        'Compliance tracking'
       ],
       status: 'concept'
     }
@@ -183,7 +137,7 @@ const FutureUpgrades = () => {
           </div>
 
           {/* Future Upgrades */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {futureUpgrades.map((upgrade, index) => (
               <div
                 key={index}
@@ -227,12 +181,6 @@ const FutureUpgrades = () => {
                 </p>
 
                 <div className="mb-6">
-                  <div className={`flex items-center text-sm font-medium mb-3 ${
-                    isDark ? 'text-cyan-400' : 'text-blue-600'
-                  }`}>
-                    <ArrowRight className="w-4 h-4 mr-2" />
-                    {upgrade.timeline}
-                  </div>
                   <ul className="space-y-2">
                     {upgrade.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start space-x-3">
@@ -248,60 +196,6 @@ const FutureUpgrades = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Development Timeline */}
-          <div className="mt-16">
-            <h3 className={`text-2xl font-bold mb-8 text-center ${
-              isDark ? 'text-white' : 'text-gray-900'
-            }`}>Development Timeline</h3>
-            <div className="relative">
-              <div className={`absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full ${
-                isDark 
-                  ? 'bg-gradient-to-b from-cyan-500 to-blue-600' 
-                  : 'bg-gradient-to-b from-blue-400 to-blue-600'
-              }`}></div>
-              
-              <div className="space-y-8">
-                {[
-                  { phase: 'Phase 1', period: 'Q2-Q3 2025', title: 'Power & Control Enhancements', items: ['UPS Integration', 'Inverter System'] },
-                  { phase: 'Phase 2', period: 'Q4 2025-Q1 2026', title: 'Smart Connectivity', items: ['IoT Hub', 'AI Optimization'] },
-                  { phase: 'Phase 3', period: 'Q2-Q3 2026', title: 'Advanced Management', items: ['Mobile Suite', 'Cloud Platform'] },
-                ].map((timeline, index) => (
-                  <div key={index} className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                      <div className={`border rounded-lg p-6 ${
-                        isDark 
-                          ? 'bg-slate-800 border-slate-600' 
-                          : 'bg-white border-gray-200 shadow-lg'
-                      }`}>
-                        <div className={`font-bold text-sm mb-1 ${
-                          isDark ? 'text-cyan-400' : 'text-blue-600'
-                        }`}>{timeline.phase}</div>
-                        <div className={`font-bold text-lg mb-2 ${
-                          isDark ? 'text-white' : 'text-gray-900'
-                        }`}>{timeline.title}</div>
-                        <div className={`text-sm mb-3 ${
-                          isDark ? 'text-slate-400' : 'text-gray-600'
-                        }`}>{timeline.period}</div>
-                        <div className="space-y-1">
-                          {timeline.items.map((item, itemIndex) => (
-                            <div key={itemIndex} className={`text-sm ${
-                              isDark ? 'text-slate-300' : 'text-gray-700'
-                            }`}>{item}</div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 ${
-                      isDark 
-                        ? 'bg-cyan-500 border-slate-900' 
-                        : 'bg-blue-500 border-white'
-                    }`}></div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
