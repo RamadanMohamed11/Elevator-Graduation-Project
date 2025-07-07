@@ -232,8 +232,8 @@ const ComponentShowcase = () => {
       backgroundImage: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d54f1956490261.59b09005aed88.png',
       videoUrl: 'https://www.youtube.com/embed/i1TJV-9ljDs',
       technicalSpecs: {
-        'Scale': '1:10',
-        'Load Capacity': '5kg',
+        // 'Scale': '1:10',
+        // 'Load Capacity': '5kg',
         'Travel Speed': '0.1 m/s',
         'Floors': '5 levels'
       }

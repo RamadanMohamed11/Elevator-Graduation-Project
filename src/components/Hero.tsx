@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { ChevronDown, Play, Zap } from 'lucide-react';
+import { ChevronDown, Play, Zap, FileText, ArrowRight } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Hero = () => {
+interface HeroProps {
+  onShowTechnicalDetails?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onShowTechnicalDetails }) => {
   const [currentFloor, setCurrentFloor] = useState(1);
   const [isMoving, setIsMoving] = useState(false);
   const [targetFloor, setTargetFloor] = useState(1);
@@ -142,6 +146,43 @@ const Hero = () => {
               touchless interfaces, advanced bus communication, and real-time monitoring capabilities.
             </p>
 
+            {/* Technical Documentation Section */}
+            <div className={`mb-10 p-6 border rounded-2xl animate-slideIn3d ${
+              isDark 
+                ? 'bg-gradient-to-r from-slate-900/80 to-slate-800/80 border-slate-700 backdrop-blur-sm' 
+                : 'bg-gradient-to-r from-white/90 to-gray-50/90 border-gray-200 backdrop-blur-sm shadow-lg'
+            }`} style={{animationDelay: '0.3s'}}>
+              <div className={`flex items-center space-x-3 mb-4 ${
+                isDark ? 'text-cyan-400' : 'text-blue-600'
+              }`}>
+                <FileText className="w-6 h-6" />
+                <h3 className={`text-xl font-bold ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>Detailed Technical Documentation</h3>
+              </div>
+              <p className={`text-lg mb-6 ${
+                isDark ? 'text-slate-300' : 'text-gray-600'
+              }`}>
+                Explore comprehensive technical specifications, system architecture details, and implementation 
+                methodologies behind our innovative bus-based elevator control system.
+              </p>
+              
+              {onShowTechnicalDetails && (
+                <button
+                  onClick={onShowTechnicalDetails}
+                  className={`group inline-flex items-center space-x-3 px-6 py-3 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
+                    isDark
+                      ? 'bg-gradient-to-r from-custom-cyan to-blue-500 hover:from-custom-cyan-dark hover:to-blue-600 text-white shadow-glow'
+                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  <FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span>Read Technical Documentation</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              )}
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12 animate-slideIn3d" style={{animationDelay: '0.4s'}}>
               <button className={`group px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-3 ${
                 isDark
@@ -158,30 +199,6 @@ const Hero = () => {
               }`}>
                 Explore Components
               </button>
-            </div>
-
-            {/* Key Features */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center animate-slideIn3d" style={{animationDelay: '0.6s'}}>
-              {[
-                { number: '10+', label: 'Components', icon: '⚡' },
-                { number: '2-Wire', label: 'Bus System', icon: '🔌' },
-                { number: '100%', label: 'Touchless', icon: '👋' },
-                { number: '24/7', label: 'Monitoring', icon: '📊' },
-              ].map((stat, index) => (
-                <div key={index} className={`group p-6 rounded-xl transition-all duration-500 transform hover:scale-110 border ${
-                  isDark
-                    ? 'bg-custom-card border-slate-700 hover:border-custom-cyan animate-cardHover3d neon-border'
-                    : 'bg-white border-gray-200 hover:border-blue-300 shadow-md hover:shadow-lg'
-                }`}>
-                  <div className="text-4xl mb-2 animate-float3d" style={{animationDelay: `${index * 0.2}s`}}>{stat.icon}</div>
-                  <div className={`text-3xl font-bold mb-2 ${
-                    isDark ? 'text-custom-cyan animate-textGlow' : 'text-blue-600'
-                  }`}>{stat.number}</div>
-                  <div className={`text-sm transition-colors ${
-                    isDark ? 'text-slate-400 group-hover:text-white' : 'text-gray-600 group-hover:text-gray-800'
-                  }`}>{stat.label}</div>
-                </div>
-              ))}
             </div>
           </div>
 
