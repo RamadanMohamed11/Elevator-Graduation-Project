@@ -30,7 +30,7 @@ const ComponentShowcase = () => {
       subtitle: 'Intelligent Power Management',
       description: 'Advanced switching power supply with multiple output rails, overvoltage protection, and intelligent load balancing. Features automatic power factor correction and energy-efficient design with 3D monitoring capabilities.',
       features: [
-        'output 12V',
+        'output 12V or 70V',
         'Overvoltage & overcurrent protection',
         'Power factor correction',
         'Energy efficiency > 90%',

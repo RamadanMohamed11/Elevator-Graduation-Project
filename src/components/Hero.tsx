@@ -69,6 +69,7 @@ const Hero: React.FC<HeroProps> = ({ onShowTechnicalDetails }) => {
   };
 
   return (
+    <section id="home" className="...">
     <section className={`relative min-h-[130vh] flex items-center justify-center overflow-hidden ${
       isDark 
         ? 'bg-custom-gradient' 
@@ -394,6 +395,7 @@ const Hero: React.FC<HeroProps> = ({ onShowTechnicalDetails }) => {
           }`}>Explore System</div>
         </div>
       </div>
+    </section>
     </section>
   );
 };

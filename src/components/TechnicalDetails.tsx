@@ -41,9 +41,9 @@ The objective of this project is not only to demonstrate the technical feasibili
     },
      {
       id: 'power supply',
-      title: 'Power Supply (220V AC to 12V DC, 15A)',
+      title: 'Power Supply (220V AC to 12V or 70V DC)',
       icon: <PlugZap className="w-6 h-6" />,
-      content: `The Power Supply unit is responsible for converting standard 220V AC mains power into a regulated 12V DC output capable of delivering up to 15A. It serves as the core power source for all subsystems within the elevator platform, including controllers, I/O devices, and sensors. Designed with industrial reliability in mind, the supply unit offers thermal and short-circuit protection and is built using high-efficiency switching technology. This makes it well-suited for both centralized power delivery and distributed elevator system configurations.`
+      content: `The Power Supply unit is responsible for converting standard 220V AC mains power into a regulated 12V or 70V DC output . It serves as the core power source for all subsystems within the elevator platform, including controllers, I/O devices, and sensors. Designed with industrial reliability in mind, the supply is built using high-efficiency switching technology. This makes it well-suited for both centralized power delivery and distributed elevator system configurations.`
     },
     {
       id: 'simulator',

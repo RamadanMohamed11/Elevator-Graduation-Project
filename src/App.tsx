@@ -12,22 +12,21 @@ import TechnicalDetails from './components/TechnicalDetails';
 
 function App() {
   const [currentView, setCurrentView] = useState<'main' | 'technical'>('main');
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('overview');
 
   const sections = [
-    { id: 'home' },
+    {id: 'home'},
     { id: 'overview' },
     { id: 'components' },
     { id: 'specs' },
     { id: 'future' },
-    { id: 'team' },
   ];
 
   const sectionRefs = sections.map(({ id }) => {
     const [ref, inView] = useInView({ threshold: 0.3 });
     useEffect(() => {
       if (inView) setActiveSection(id);
-    }, [inView, id]);
+    }, [inView]);
     return { id, ref };
   });
 
@@ -47,24 +46,20 @@ function App() {
         {currentView === 'main' ? (
           <>
             <Header activeSection={activeSection} />
-            <div id="home" ref={sectionRefs[0].ref}>
-              <Hero onShowTechnicalDetails={showTechnicalDetails} />
-            </div>
-            <div id="overview" ref={sectionRefs[1].ref}>
+            <Hero onShowTechnicalDetails={showTechnicalDetails} />
+            <div id="overview" ref={sectionRefs[0].ref}>
               <ProjectOverview onShowTechnicalDetails={showTechnicalDetails} />
             </div>
-            <div id="components" ref={sectionRefs[2].ref}>
+            <div id="components" ref={sectionRefs[1].ref}>
               <ComponentShowcase />
             </div>
-            <div id="specs" ref={sectionRefs[3].ref}>
+            <div id="specs" ref={sectionRefs[2].ref}>
               <TechnicalSpecs />
             </div>
-            <div id="future" ref={sectionRefs[4].ref}>
+            <div id="future" ref={sectionRefs[3].ref}>
               <FutureUpgrades />
             </div>
-            <div id="team" ref={sectionRefs[5].ref}>
-              <Footer />
-            </div>
+            <Footer />
           </>
         ) : (
           <TechnicalDetails onBack={showMainView} />
